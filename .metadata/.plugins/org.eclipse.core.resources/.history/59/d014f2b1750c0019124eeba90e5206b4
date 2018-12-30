@@ -18,7 +18,7 @@ public class BarCodeChecker {
 		read.close();
 		if(validate(input)) {
 			input=fillCode(input);
-			//CALCULATE CHECK DIGIT HERE
+			System.out.println(input);
 		}else {
 			System.out.println("Wrong barcode format.");
 		}
@@ -44,12 +44,6 @@ public class BarCodeChecker {
 		while(result.length()<11) {
 			result="0"+result;
 		}
-		return result;
-	}
-	
-	
-	private int calculateCheckDigit(String barcode) {
-		int result = 0;
 		return result;
 	}
 }

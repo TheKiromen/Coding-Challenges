@@ -46,10 +46,4 @@ public class BarCodeChecker {
 		}
 		return result;
 	}
-	
-	
-	private int calculateCheckDigit(String barcode) {
-		int result = 0;
-		return result;
-	}
 }

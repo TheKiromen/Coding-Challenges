@@ -16,17 +16,11 @@ public class BarCodeChecker {
 		read=new Scanner(System.in);
 		input=read.nextLine();
 		read.close();
-		if(validate(input)) {
-			input=fillCode(input);
-			//CALCULATE CHECK DIGIT HERE
-		}else {
-			System.out.println("Wrong barcode format.");
-		}
 	}
 	
 	
-	private boolean validate(String barcode) {
-		inputdigits=barcode.toCharArray();
+	private boolean validate(String s) {
+		inputdigits=s.toCharArray();
 		if(inputdigits.length<12) {
 			for(char c : inputdigits) {
 				if(c<48||c>57) {
@@ -36,20 +30,5 @@ public class BarCodeChecker {
 			return true;
 		}
 		return false;
-	}
-	
-	
-	private String fillCode(String barcode) {
-		String result=barcode;
-		while(result.length()<11) {
-			result="0"+result;
-		}
-		return result;
-	}
-	
-	
-	private int calculateCheckDigit(String barcode) {
-		int result = 0;
-		return result;
 	}
 }

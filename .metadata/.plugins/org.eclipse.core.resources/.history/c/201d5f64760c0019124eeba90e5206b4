@@ -19,6 +19,8 @@ public class BarCodeChecker {
 		if(validate(input)) {
 			input=fillCode(input);
 			//CALCULATE CHECK DIGIT HERE
+			int p = 10;
+			System.out.println(Integer.toString(p));
 		}else {
 			System.out.println("Wrong barcode format.");
 		}
