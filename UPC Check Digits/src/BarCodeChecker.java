@@ -1,5 +1,8 @@
 
 public class BarCodeChecker {
+	//Scanner
+	String input;
+	char[] inputdigits;
 
 	public static void main(String[] args) {
 		BarCodeChecker bcc = new BarCodeChecker();
