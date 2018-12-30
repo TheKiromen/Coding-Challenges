@@ -7,7 +7,7 @@ public class BarCodeChecker {
 	}
 
 	private void start() {
-		
+		System.out.println("Hello World!");
 	}
 	
 }
