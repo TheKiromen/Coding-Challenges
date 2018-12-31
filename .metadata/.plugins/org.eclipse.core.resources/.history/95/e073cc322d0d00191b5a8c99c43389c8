@@ -18,9 +18,8 @@ public class BarCodeChecker {
 		read.close();
 		if(validate(input)) {
 			input=fillCode(input);
-			System.out.println("Check digit is: "+calculateCheckDigit(input));
-			input+=calculateCheckDigit(input);
-			System.out.println("\nThe full barcode is: "+input);
+			input+=calculateCheckDigit(input)
+			System.out.println(input+calculateCheckDigit(input));
 		}else {
 			System.out.println("Wrong barcode format.");
 		}

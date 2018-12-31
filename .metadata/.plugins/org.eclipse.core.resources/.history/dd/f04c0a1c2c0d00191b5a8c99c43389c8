@@ -18,9 +18,7 @@ public class BarCodeChecker {
 		read.close();
 		if(validate(input)) {
 			input=fillCode(input);
-			System.out.println("Check digit is: "+calculateCheckDigit(input));
-			input+=calculateCheckDigit(input);
-			System.out.println("\nThe full barcode is: "+input);
+			//CALCULATE CHECK DIGIT HERE
 		}else {
 			System.out.println("Wrong barcode format.");
 		}
@@ -52,23 +50,6 @@ public class BarCodeChecker {
 	
 	private int calculateCheckDigit(String barcode) {
 		int result = 0;
-		int odd = 0;
-		int even = 0;
-		inputdigits=barcode.toCharArray();
-		for(int i=0;i<inputdigits.length;i++) {
-			if(i%2==0) {
-				odd+=(int)inputdigits[i]-48;
-			}else {
-				even+=(int)inputdigits[i]-48;
-			}
-			
-		}
-		odd=odd*3;
-		result=odd+even;
-		result=result%10;
-		if(result>0) {
-			result=10-result;
-		}
 		return result;
 	}
 }
