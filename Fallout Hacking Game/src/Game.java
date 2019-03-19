@@ -14,8 +14,8 @@ public class Game {
 		BufferedReader data;
 		Scanner input;
 		String[] words;
-		String answer;
-		int difficulty,length=0,word_count=0;
+		String answer,guess="";
+		int difficulty,length=0,word_count=0,letters_matching=0,guess_count=4;
 		try {
 			data = new BufferedReader(new FileReader("enable1.txt"));
 			input = new Scanner(System.in);
@@ -48,17 +48,41 @@ public class Game {
 				answer=data.readLine();
 				if(answer.length()==length) {
 					words[i]=answer;
+					System.out.println(answer);
 					i++;
 				}
 			}
-			answer=words[(int)(Math.random()*10)+1];
+			answer=words[(int)(Math.random()*word_count)+1];
+			input.nextLine();
+			do{
+				System.out.println("Guess? ("+guess_count+" left)");
+				guess=input.nextLine();
+				letters_matching=checkAnswer(guess,answer);
+				System.out.println(letters_matching+"/"+length+" correct");
+				guess_count--;
+			}while(guess_count>0&&letters_matching!=answer.length());
+			if(guess_count==0) {
+				System.out.println("You lose!");
+			}else {
+				System.out.println("You win!");
+			}
 		} catch (Exception e) {
 			System.out.println("Error occurred.");
 		}
 	}
 	
-	boolean checkAnswer(String s) {
-		return false;
+	
+	//outputs number of correct letters
+	int checkAnswer(String guess,String answer) {
+		int letters_matching=0;
+		if(guess.length()==answer.length()) {
+			for(int i=0;i<guess.length();i++) {
+				if(guess.charAt(i)==answer.charAt(i)) {
+					letters_matching++;
+				}
+			}
+		}
+		return letters_matching;
 	}
 
 }
