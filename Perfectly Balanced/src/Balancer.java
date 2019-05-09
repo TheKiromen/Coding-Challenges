@@ -9,6 +9,7 @@ public class Balancer {
 	}
 	
 	private void start() {
+		System.out.println("---BASIC CHALLENGE---");
 		System.out.println(balanced("xxxyyy"));
 		System.out.println(balanced("yyyxxx"));
 		System.out.println(balanced("xxxyyyy"));
@@ -16,6 +17,7 @@ public class Balancer {
 		System.out.println(balanced("xyxxxxyyyxyxxyxxyy"));
 		System.out.println(balanced(""));
 		System.out.println(balanced("x"));
+		System.out.println("---BONUS CHALLENGE---");
 		System.out.println(balanced_bonus("xxxyyyzzz"));
 		System.out.println(balanced_bonus("abccbaabccba"));
 		System.out.println(balanced_bonus("xxxyyyzzzz"));
@@ -43,8 +45,31 @@ public class Balancer {
 	
 	
 	private boolean balanced_bonus(String input) {
-		//---TODO---//
-		
-		return false;
+		ArrayList<MyChar> apperances = new ArrayList<MyChar>();
+		char [] chars=input.toCharArray();
+		int index=0;
+
+		if(input.length()<2) {
+			return true;
+		}else {
+			Arrays.parallelSort(chars);
+			apperances.add(new MyChar(chars[0]));
+			for(int i=0;i<chars.length-1;i++) {
+				if(chars[i]==chars[i+1]) {
+					apperances.get(index).increment();
+				}else {
+					apperances.add(new MyChar(chars[i+1]));
+					index++;
+				}
+			}
+			
+			for(int i=1;i<apperances.size();i++) {
+				if(apperances.get(0).getApperances()!=apperances.get(i).getApperances()) {
+					return false;
+				}
+			}
+			
+			return true;
+		}
 	}
 }
